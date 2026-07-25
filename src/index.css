@@ -1,0 +1,163 @@
+/* ================================================================
+   HBD Ploy — White & Soft Pink Dream Design System
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Itim&family=Kanit:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Mali:wght@400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap');
+
+/* ===== Design Tokens (White & Soft Pastel Pink) ===== */
+:root {
+  /* Main Backgrounds */
+  --bg-white:      #fffdfd;
+  --bg-soft-pink: #fff0f5;
+  --bg-cream-pink:#ffeef4;
+  --bg-gradient:  linear-gradient(180deg, #fffdfd 0%, #fff0f5 50%, #ffeef4 100%);
+  --bg-card:      rgba(255, 255, 255, 0.85);
+
+  /* Primary Accent Colors */
+  --pink-50:  #fff5f8;
+  --pink-100: #ffe4ed;
+  --pink-200: #ffbcd3;
+  --pink-300: #ff91b5;
+  --pink-400: #ff6b97;
+  --pink-500: #ff477e;
+  --pink-600: #e02868;
+  --pink-700: #b81750;
+  
+  /* Romantic Colors */
+  --rose-gold:   #e8a0b0;
+  --gold-warm:   #f7d088;
+  --gold-shiny:  #ffd700;
+  --cream-white: #fffdf9;
+
+  /* Text Colors (Readable Deep Rose / Coral Dark) */
+  --text-dark:   #4a2e35;
+  --text-medium: #6c434f;
+  --text-muted:  #9e6b78;
+  --text-bright: #ff3366;
+
+  /* Glassmorphism Light Tokens */
+  --glass-bg:     rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 182, 193, 0.45);
+  --glass-shadow: 0 16px 40px rgba(255, 107, 151, 0.12);
+  --glass-glow:   0 0 25px rgba(255, 145, 181, 0.25);
+
+  /* Fonts */
+  --font-title:   'Mali', 'Itim', cursive, sans-serif;
+  --font-cursive: 'Great Vibes', cursive;
+  --font-body:    'Kanit', 'Prompt', sans-serif;
+
+  /* Utility Specs */
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --transition-smooth: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ===== Global Reset ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-white);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(255, 228, 237, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(255, 240, 245, 0.8) 0%, transparent 50%);
+}
+
+::selection {
+  background: var(--pink-300);
+  color: #fff;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-soft-pink); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--pink-300), var(--pink-500));
+  border-radius: 10px;
+  border: 2px solid var(--bg-soft-pink);
+}
+
+/* ===== Glass Card (Light Pastel Aesthetic) ===== */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s var(--transition-smooth);
+}
+
+.glass-card:hover {
+  box-shadow: 0 20px 50px rgba(255, 107, 151, 0.2), var(--glass-glow);
+  border-color: rgba(255, 107, 151, 0.6);
+}
+
+/* ===== Section Structure ===== */
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 90px 24px;
+}
+
+.section-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--pink-600), var(--pink-400), #e87a90);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 4px 10px rgba(255, 107, 151, 0.15));
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 44px;
+}
+
+/* ===== Shared Keyframes ===== */
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,107,151,0.3)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(255,107,151,0.6)); }
+}
+
+@keyframes shimmerLight {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

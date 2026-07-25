@@ -1,0 +1,6 @@
+.wishes-section {
+  background: 
+    radial-gradient(ellipse at 50% 50%, rgba(255, 228, 237, 0.5) 0%, transparent 70%),
+    var(--bg-soft-pink);
+  overflow: hidden;
+}
