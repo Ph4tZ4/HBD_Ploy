@@ -32,6 +32,13 @@ export default function Gallery() {
     []
   );
 
+  const handleVideoRef = useCallback((node) => {
+    if (node) {
+      node.muted = false;
+      node.play().catch(e => console.log('Autoplay prevented by browser:', e));
+    }
+  }, []);
+
   return (
     <section id="gallery" className="section gallery-section">
       <div className="section-container">
@@ -128,10 +135,11 @@ export default function Gallery() {
               {GALLERY_ITEMS[lightbox].type === 'video' ? (
                 <div className="lightbox-img-wrapper">
                   <video
+                    key={GALLERY_ITEMS[lightbox].src}
+                    ref={handleVideoRef}
                     src={GALLERY_ITEMS[lightbox].src}
                     className="lightbox-img"
                     controls
-                    autoPlay
                     loop
                     playsInline
                   />
