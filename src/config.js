@@ -1,10 +1,18 @@
 /* ===== Configuration ===== */
 import img1 from './images/6BA1EB1B-281F-41C4-8637-2BB40871988B.JPG';
-import img2 from './images/CB93F466-5FE2-4B50-AAB9-3DA139A62621.JPG';
-import img3 from './images/IMG_3371.jpg';
-import img4 from './images/IMG_4418.jpg';
-import img5 from './images/IMG_4514.jpg';
-import img6 from './images/temp_image_CBE67ACF-875B-43C5-9B82-EEB681DC9921.JPG';
+import img2 from './images/IMG_4418.jpg';
+import img3 from './images/IMG_4514.jpg';
+import img4 from './images/temp_image_CBE67ACF-875B-43C5-9B82-EEB681DC9921.JPG';
+import img5 from './images/IMG_4619.JPG';
+import img6 from './images/S__21004300.jpg';
+import img7 from './images/S__21004311.jpg';
+import img8 from './images/S__21004314.jpg';
+import img9 from './images/S__21004315.jpg';
+import img10 from './images/S__21004325.jpg';
+
+import vid1 from './images/25690725_160729_419.MP4';
+import vid2 from './images/806659020.703314.mp4';
+import vid3 from './images/806659020.766714.mp4';
 
 export const BIRTHDAY_MONTH = 6; // กรกฎาคม (0-indexed: ม.ค.=0)
 export const BIRTHDAY_DAY = 25;
@@ -68,9 +76,16 @@ export const TIMELINE_EVENTS = [
 
 export const GALLERY_ITEMS = [
   { hue: 340, label: 'ความทรงจำสุดน่ารัก 1', wide: true, emoji: '🌸', img: img1 },
-  { hue: 320, label: 'รอยยิ้มของพลอย 2', wide: false, emoji: '✨', img: img2 },
-  { hue: 300, label: 'ทริปแสนสนุก 3', wide: false, emoji: '🎀', img: img3 },
-  { hue: 280, label: 'โมเมนต์อบอุ่น 4', wide: false, emoji: '💖', img: img4 },
-  { hue: 350, label: 'ภาพโปรดของเรา 5', wide: true, emoji: '🌷', img: img5 },
-  { hue: 310, label: 'วันสบายๆ 6', wide: false, tall: true, emoji: '🍰', img: img6 },
+  { hue: 320, label: 'วิดีโอความทรงจำ 1', wide: false, emoji: '🎥', src: vid1, type: 'video' },
+  { hue: 300, label: 'โมเมนต์อบอุ่น 2', wide: false, emoji: '💖', img: img2 },
+  { hue: 350, label: 'ภาพโปรดของเรา 3', wide: true, emoji: '🌷', img: img3 },
+  { hue: 330, label: 'วิดีโอความทรงจำ 2', wide: false, tall: true, emoji: '🎬', src: vid2, type: 'video' },
+  { hue: 280, label: 'ทริปแสนสนุก 4', wide: false, emoji: '🎀', img: img4 },
+  { hue: 310, label: 'วันสบายๆ 5', wide: false, tall: true, emoji: '🍰', img: img5 },
+  { hue: 340, label: 'รูปคู่สุดคิวท์ 6', wide: false, emoji: '✨', img: img6 },
+  { hue: 300, label: 'วิดีโอความทรงจำ 3', wide: true, emoji: '📹', src: vid3, type: 'video' },
+  { hue: 320, label: 'รอยยิ้มของพลอย 7', wide: false, emoji: '🥰', img: img7 },
+  { hue: 350, label: 'ภาพแห่งความสุข 8', wide: false, emoji: '❤️', img: img8 },
+  { hue: 290, label: 'ไปเที่ยวด้วยกัน 9', wide: true, emoji: '✈️', img: img9 },
+  { hue: 330, label: 'น่ารักที่สุด 10', wide: false, tall: true, emoji: '🌟', img: img10 },
 ];

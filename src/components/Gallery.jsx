@@ -77,9 +77,16 @@ export default function Gallery() {
               onClick={() => open(i)}
               layout
             >
-              {item.img ? (
+              {item.type === 'video' ? (
                 <div className="gallery-img-wrapper">
-                  <img src={item.img} alt={item.label} className="gallery-img" loading="lazy" />
+                  <video src={item.src} className="gallery-img" loop muted playsInline autoPlay />
+                  <div className="gallery-overlay">
+                    <span className="gallery-label-overlay">{item.label}</span>
+                  </div>
+                </div>
+              ) : item.img || item.src ? (
+                <div className="gallery-img-wrapper">
+                  <img src={item.img || item.src} alt={item.label} className="gallery-img" loading="lazy" />
                   <div className="gallery-overlay">
                     <span className="gallery-label-overlay">{item.label}</span>
                   </div>
@@ -118,10 +125,22 @@ export default function Gallery() {
               transition={{ type: 'spring', stiffness: 200, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {GALLERY_ITEMS[lightbox].img ? (
+              {GALLERY_ITEMS[lightbox].type === 'video' ? (
+                <div className="lightbox-img-wrapper">
+                  <video
+                    src={GALLERY_ITEMS[lightbox].src}
+                    className="lightbox-img"
+                    controls
+                    autoPlay
+                    loop
+                    playsInline
+                  />
+                  <div className="lightbox-caption">{GALLERY_ITEMS[lightbox].label}</div>
+                </div>
+              ) : GALLERY_ITEMS[lightbox].img || GALLERY_ITEMS[lightbox].src ? (
                 <div className="lightbox-img-wrapper">
                   <img
-                    src={GALLERY_ITEMS[lightbox].img}
+                    src={GALLERY_ITEMS[lightbox].img || GALLERY_ITEMS[lightbox].src}
                     alt={GALLERY_ITEMS[lightbox].label}
                     className="lightbox-img"
                   />
