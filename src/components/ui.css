@@ -1,0 +1,394 @@
+/* ===== Starlight Atelier — Component Styles ===== */
+
+/* ---------- Lock Screen ---------- */
+.lockscreen {
+  z-index: 20;
+  cursor: grab;
+  touch-action: none;
+}
+.lockscreen:active { cursor: grabbing; }
+
+.lockscreen-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 22%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 32% 68%, #ffd98e 100%, transparent),
+    radial-gradient(1.8px 1.8px at 56% 14%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 74% 42%, #f5c6d6 100%, transparent),
+    radial-gradient(1.4px 1.4px at 88% 76%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 44% 88%, #b8a9ff 100%, transparent),
+    radial-gradient(1.2px 1.2px at 22% 46%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 66% 58%, #ffd98e 100%, transparent);
+  animation: breathe 7s ease-in-out infinite;
+}
+
+.lockscreen-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: max(72px, 12vh);
+  pointer-events: none;
+}
+
+.lockscreen-lock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: var(--text-mid);
+  margin-bottom: 22px;
+}
+
+.lockscreen-date {
+  color: var(--text-mid);
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+
+.lockscreen-time {
+  font-size: clamp(4.4rem, 14vw, 6.8rem);
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.lockscreen-mascot {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 200px;
+  max-height: 340px;
+  margin-top: 10px;
+  pointer-events: none;
+}
+
+.lockscreen-hero { margin-bottom: 34px; text-align: center; }
+
+.lockscreen-greeting {
+  color: var(--rose-gold);
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+}
+
+.lockscreen-name {
+  font-size: clamp(3.4rem, 11vw, 5.6rem);
+  margin: 6px 0 2px;
+}
+
+.lockscreen-year {
+  color: var(--text-low);
+  letter-spacing: 0.55em;
+  font-size: 0.95rem;
+  text-indent: 0.55em;
+}
+
+.lockscreen-swipe-wrap {
+  position: absolute;
+  bottom: max(40px, calc(env(safe-area-inset-bottom) + 28px));
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.lockscreen-swipe {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  color: var(--text-hi);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* ---------- Dock ---------- */
+.dock {
+  position: fixed;
+  bottom: max(18px, calc(env(safe-area-inset-bottom) + 12px));
+  left: 50%;
+  display: flex;
+  gap: 6px;
+  padding: 10px 14px;
+  z-index: 30;
+}
+
+.dock-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 15px;
+  background: transparent;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.dock-item:hover { background: rgba(255, 255, 255, 0.12); color: var(--text-hi); }
+.dock-item.active { background: rgba(255, 158, 187, 0.22); color: var(--pink); }
+.dock-item.locked { opacity: 0.4; cursor: not-allowed; }
+
+.dock-dot {
+  position: absolute;
+  bottom: 3px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.25s ease;
+}
+.dock-item.active .dock-dot { background: var(--pink); }
+
+/* ---------- Hub ---------- */
+.hub-overlay { justify-content: center; gap: 6px; padding-bottom: 90px; }
+
+.hub-kicker { color: var(--rose-gold); font-size: 1.05rem; letter-spacing: 0.08em; }
+.hub-title { font-size: clamp(3rem, 9vw, 5rem); margin-bottom: 34px; }
+
+.hub-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  width: min(760px, 100%);
+  perspective: 900px;
+}
+
+.hub-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 26px 14px 22px;
+  color: var(--text-hi);
+  font-family: var(--font-body);
+  cursor: pointer;
+  border-radius: var(--r-lg);
+  animation: breathe 6s ease-in-out infinite;
+}
+.hub-card:nth-child(2n) { animation-delay: -2s; }
+.hub-card:nth-child(3n) { animation-delay: -4s; }
+.hub-card.locked { opacity: 0.55; cursor: not-allowed; }
+
+.hub-card-icon { color: var(--starlight); animation: glowPulse 4s ease-in-out infinite; }
+.hub-card.locked .hub-card-icon { color: var(--text-low); animation: none; }
+.hub-card-title { font-size: 1.02rem; font-weight: 400; }
+.hub-card-desc { font-size: 0.78rem; color: var(--text-low); }
+
+/* ---------- Shared hints & cards ---------- */
+.hint-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+}
+
+.letter-backdrop {
+  background: rgba(6, 6, 18, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 15;
+}
+
+.letter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: min(480px, 92vw);
+  max-height: 78vh;
+  padding: 34px 30px;
+  overflow-y: auto;
+}
+
+.letter-title { font-size: 1.6rem; color: var(--rose-gold); }
+
+.letter-body {
+  white-space: pre-line;
+  color: var(--text-mid);
+  font-size: 0.98rem;
+  line-height: 1.9;
+}
+
+/* ---------- Cake ---------- */
+.cake-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+.cake-controls > * { pointer-events: auto; }
+
+.wish-text {
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  text-align: center;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ---------- Star Game ---------- */
+.game-hud {
+  position: absolute;
+  top: max(18px, env(safe-area-inset-top));
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 20px 9px 10px;
+  z-index: 10;
+}
+
+.game-ring { position: relative; width: 34px; height: 34px; }
+.game-ring-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-hi);
+}
+
+.game-stars { display: flex; gap: 3px; }
+.game-score { font-size: 0.9rem; font-weight: 500; color: var(--starlight); min-width: 34px; }
+
+.game-compliment {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  z-index: 12;
+  pointer-events: none;
+}
+.game-compliment-pill {
+  display: inline-block;
+  padding: 13px 26px;
+  color: var(--rose-gold);
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.game-banner {
+  position: absolute;
+  top: max(80px, calc(env(safe-area-inset-top) + 64px));
+  left: 50%;
+  padding: 14px 30px;
+  color: var(--starlight);
+  font-size: 1rem;
+  white-space: nowrap;
+  z-index: 12;
+}
+
+.game-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose-gold), var(--starlight));
+  box-shadow: 0 0 12px rgba(255, 217, 142, 0.7);
+  transition: width 0.5s var(--spring);
+  z-index: 11;
+}
+
+/* ---------- Finale ---------- */
+.finale-banner {
+  position: absolute;
+  bottom: 148px;
+  left: 50%;
+  padding: 12px 26px;
+  color: var(--rose-gold);
+  font-size: 0.92rem;
+  white-space: nowrap;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.finale-video-btn {
+  position: absolute;
+  bottom: 92px;
+  left: 50%;
+  z-index: 9;
+  white-space: nowrap;
+}
+
+.memory-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: min(560px, 92vw);
+  padding: 18px 18px 20px;
+}
+
+.memory-media {
+  width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  border-radius: var(--r-md);
+  background: #000;
+}
+
+.memory-label { color: var(--rose-gold); font-size: 1.05rem; }
+
+.memory-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--text-hi);
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.25s ease, transform 0.3s var(--spring);
+}
+.memory-close:hover { background: rgba(255, 255, 255, 0.26); transform: scale(1.1); }
+
+.finale-video-card { width: min(720px, 94vw); }
+
+/* ---------- Theme Toggle ---------- */
+.theme-toggle {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: 18px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: var(--text-hi);
+  cursor: pointer;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  .dock { gap: 2px; padding: 8px 10px; }
+  .dock-item { width: 42px; height: 42px; border-radius: 13px; }
+  .hub-cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hub-card { padding: 20px 10px 16px; }
+  .hub-title { margin-bottom: 24px; }
+  .letter-card { padding: 26px 20px; }
+  .game-hud { gap: 9px; padding: 7px 14px 7px 8px; }
+  .game-stars svg { width: 14px; height: 14px; }
+  .finale-banner { font-size: 0.8rem; bottom: 156px; padding: 10px 18px; }
+  .game-banner { font-size: 0.85rem; white-space: normal; text-align: center; width: 86vw; }
+}
